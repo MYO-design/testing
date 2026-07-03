@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "d6d204c5ce0a1624e4aa",
+  "position": {
+    "x": 9.6055210305030236,
+    "y": 0,
+    "z": 0,
+    "height": 326.58771503710284,
+    "width": 590.05343473090011,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Full Name (Employee Information)"
+                    }
+                  },
+                  "Property": "Column1"
+                }
+              },
+              "queryRef": "Full Name (Employee Information).Column1",
+              "nativeQueryRef": "Column1",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5ad8fd4ef871caf15712",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Full Name (Employee Information)"
+              }
+            },
+            "Property": "Column1"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

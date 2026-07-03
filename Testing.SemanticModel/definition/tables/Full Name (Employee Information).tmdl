@@ -1,0 +1,34 @@
+table 'Full Name (Employee Information)'
+	lineageTag: c0e3c69d-1209-448e-b652-e2abd0711ec7
+
+	column Column1
+		dataType: string
+		lineageTag: 2f82996b-4308-42b7-a788-9db7f7b7c169
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column4
+		dataType: string
+		lineageTag: bf868eac-6780-47e3-84ff-a364c79ed7cb
+		summarizeBy: none
+		sourceColumn: Column4
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Full Name (Employee Information)' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\Lenovo\Downloads\DLMM - Candidate Application Form.xlsx"), null, false),
+				    #"Employee Information_sheet" = Source{[Item="Employee Information",Kind="Sheet"]}[Data],
+				    #"Removed Top Rows" = Table.Skip(#"Employee Information_sheet", 2),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Removed Top Rows", 30),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Removed Bottom Rows", {"Column1", "Column4"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns",{{"Column1", type text}, {"Column4", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

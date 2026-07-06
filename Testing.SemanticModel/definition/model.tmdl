@@ -13,6 +13,7 @@ annotation PBI_QueryOrder = ["Full Name (Employee Information)"]
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table 'Full Name (Employee Information)'
+ref table measure
 
 ref cultureInfo en-US
 

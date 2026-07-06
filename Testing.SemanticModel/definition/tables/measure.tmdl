@@ -1,0 +1,36 @@
+table measure
+	lineageTag: fcd4a497-8d86-48b3-9984-8635b548fc7d
+
+	measure 'First Column4 min per Column1' =
+			
+			MINX(
+				KEEPFILTERS(VALUES('Full Name (Employee Information)'[Column1])),
+				CALCULATE(MIN('Full Name (Employee Information)'[Column4]))
+			)
+		lineageTag: 56f34746-d6cd-449d-9234-c51d5e77cd04
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MinPerCategory"
+				}
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isText":true}
+
+	column Value
+		formatString: 0
+		lineageTag: a8581ecf-6854-44dc-bf92-c3145acbf9a4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition measure = calculated
+		mode: import
+		source = {0}
+
+	annotation PBI_Id = 05520017b9c54b1e8443817a4d4c1a0d
+
